@@ -23,7 +23,7 @@ class CreateCarsTable extends Migration
             $table->boolean('automatic');
             $table->unsignedInteger('price');
             $table->unsignedInteger('buynow_price');
-            $table->longtext('descripton');
+            $table->longtext('description');
             $table->foreignId('owner')->constrained('users');
         });
     }

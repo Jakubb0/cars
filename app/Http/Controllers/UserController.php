@@ -23,6 +23,8 @@ class UserController extends Controller
         $data = $request->only('login', 'password');
 
         if(Auth::attempt($data))
-            return redirect()->intended('mainpage');
+            return redirect()->intended('cars');
+        else
+            return redirect()->back();  
     }
 }

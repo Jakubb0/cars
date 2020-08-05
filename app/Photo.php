@@ -10,6 +10,6 @@ class Photo extends Model
 
     public function cars()
     {
-        return $this->belongsTo('App\Car');
+        return $this->belongsTo('App\Car', 'car');
     }
 }

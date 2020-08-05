@@ -29,10 +29,10 @@
                     <input type="email" id="email" name="email" class="form-control">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>
-        <button type="submit" class="btn btn-primary">Zarejestruj</button>
-        </form>
-        </div>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>
+            <button type="submit" class="btn btn-primary">Zarejestruj</button>
+            </form>
+      </div>
       </div>
     </div>
   </div>
@@ -52,10 +52,10 @@
         <div class="form-group">
             <form action="{{route('login')}}" method="POST">
             @csrf
-                <label for="login">Login</label>
-                    <input type="text" id="login" name="login" class="form-control">
-                <label for="password">Hasło</label>
-                    <input type="password" id="password" name="password" class="form-control">
+                <label for="silogin">Login</label>
+                    <input type="text" id="silogin" name="login" class="form-control">
+                <label for="sipassword">Hasło</label>
+                    <input type="password" id="sipassword" name="password" class="form-control">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>

@@ -13,3 +13,14 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+
+
+
+$(document).on('change', '#photos', function(event) {
+    var photos = $("#photos").prop("files");
+    $("#filesgallery").empty();
+    for(var i=0; i<photos.length; i++)
+    {
+        $("#filesgallery").append("<img src='"+ URL.createObjectURL(event.target.files[i]) +"' width ='200px' height='200px' />");
+    }
+})

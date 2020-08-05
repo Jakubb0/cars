@@ -10937,20 +10937,3 @@ a.text-dark:focus {
   text-decoration: none;
 }
 
-.flex-car {
-  flex: 0 0 33%;
-  /*grow | shrink | basis */
-  min-width: 20%;
-}
-
-@media only screen and (max-width: 600px) {
-  #test {
-    flex-wrap: nowrap !important;
-  }
-
-  .flex-car {
-    flex: 1 1 100%;
-    min-width: 100%;
-  }
-}
-
