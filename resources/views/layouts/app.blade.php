@@ -18,25 +18,25 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
+    </head>
     <body>
     <div id="app" class="container w-100">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Cars</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">Home</a>
-                <a class="nav-item nav-link" href="#">My auctions</a>
-                <a class="nav-item nav-link" href="#">My cars</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{{route('cars.index')}}">Cars</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="{{route('cars.index')}}">Home</a>
+                    <a class="nav-item nav-link" href="#">My auctions</a>
+                    <a class="nav-item nav-link" href="#">My cars</a>
+                </div>
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link mr-0" href="#">Logout</a>
+                </div>
             </div>
-            <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link mr-0" href="#">Logout</a>
-            </div>
-        </div>
-    </nav>
+        </nav>
         <main class="py-4 container">
             @yield('content')
         </main>

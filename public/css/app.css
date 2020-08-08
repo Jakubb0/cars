@@ -10933,7 +10933,70 @@ a.text-dark:focus {
   color: black;
 }
 
+.car-link img {
+  max-height: 246px;
+  max-width: 328px;
+  height: auto;
+  width: auto;
+}
+
+.car-card-image {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.card {
+  padding: 0;
+}
+
 .car-link:hover {
   text-decoration: none;
+  color: black;
+  opacity: 100%;
+  -webkit-animation-name: carhover;
+          animation-name: carhover;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
+@-webkit-keyframes carhover {
+  from {
+    opacity: 100%;
+  }
+
+  to {
+    opacity: 70%;
+  }
+}
+
+@keyframes carhover {
+  from {
+    opacity: 100%;
+  }
+
+  to {
+    opacity: 70%;
+  }
+}
+
+.car-photo-lg img {
+  height: 500px;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.car-photo-sm img {
+  height: 166px;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.car-photo-text img {
+  opacity: 70%;
+}
+
+.car-desc {
+  white-space: pre-wrap;
 }
 

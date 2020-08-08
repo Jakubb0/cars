@@ -23,4 +23,32 @@ $(document).on('change', '#photos', function(event) {
     {
         $("#filesgallery").append("<img src='"+ URL.createObjectURL(event.target.files[i]) +"' width ='200px' height='200px' />");
     }
-})
+});
+
+$(document).on('click', '.car-photo', function(){
+    var id = $(this).attr("val");
+    console.log($(this).attr("val"));
+    $.ajax({
+        type:'GET',
+        url: '../test/'+ id,
+        success:function(data){
+           console.log("test");
+        }
+     });
+});
+
+$(document).on('click', '#nextphoto', function(){
+    if($("#test").next().is("img")){
+        var src = $("#test").next().attr("src");
+        $("#test").insertAfter($("#test").next());
+        $("#test").attr("src", src);
+    }
+});
+
+$(document).on('click', '#prevphoto', function(){
+    if($("#test").prev().is("img")){
+        var src = $("#test").prev().attr("src");
+        $("#test").attr("src", src);
+        $("#test").insertBefore($("#test").prev());
+    }
+});

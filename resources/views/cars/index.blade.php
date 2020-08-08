@@ -5,7 +5,9 @@
     @foreach($cars as $car)
     <div class="card col-md-4">
     <a class="car-link" href="{{route('cars.show', $car->id)}}">
-        <img src="IMG_20190401_184323.jpg" alt="No photo" class="card-img-top">
+        <div class="text-center car-card-image">
+            <img src="{{asset('storage/cars/'.$car->photos[0]->name)}}" alt="No photo" class="card-img-top">
+        </div>
         <div class="card-body">
                 <p>{{$car->brand}} {{$car->model}}</p>
                 <p>Year: {{$car->year}}</p>

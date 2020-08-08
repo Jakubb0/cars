@@ -19,13 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 //User
 
 Route::post('/register', 'UserController@register')->name('register');
 Route::post('/login', 'UserController@login')->name('login');
-Route::view('/mainpage', 'mainpage');
+
+Route::get('/test/{carid}', 'PhotoController@gallery')->name('gallery');
 
 //Car
 Route::resource('cars', 'CarController')->middleware('web'); // anything that uses Auth must be in 'web' middleware

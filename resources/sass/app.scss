@@ -7,11 +7,59 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+//css for cars/index
 .car-link{
     text-decoration: none;
     color: black;
 }
 
+.car-link img{
+    max-height: 246px;
+    max-width: 328px;
+    height: auto;
+    width: auto;
+}
+
+
+.car-card-image {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.card {
+    padding: 0;
+}
+
 .car-link:hover{
     text-decoration: none;
+    color: black;
+    opacity: 100%;
+    animation-name: carhover;
+    animation-duration: 2s;
+}
+//animation for hover
+@keyframes carhover {
+    from {opacity: 100%;}
+    to {opacity: 70%;}
+}
+
+///////////////////////////////////////////// 
+
+//css for cars/show
+.car-photo-lg img{
+    height: 500px;
+    width: 100%;
+    object-fit: contain; 
+}
+.car-photo-sm img{
+    height: 166px;
+    width: 100%;
+    object-fit: contain; 
+}
+
+.car-photo-text img{
+    opacity: 70%;
+}
+
+.car-desc{
+    white-space: pre-wrap;
 }

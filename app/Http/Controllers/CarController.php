@@ -6,6 +6,8 @@ use App\Car;
 use App\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class CarController extends Controller
 {
@@ -54,11 +56,14 @@ class CarController extends Controller
         $photos = $request->file('photos');
         foreach($photos as $p)
         {
+            $ext = $p->getClientOriginalExtension();
+            $newfilename = pathinfo($p->getClientOriginalName(), PATHINFO_FILENAME) . "_" . date("d_m_Y") . "_" . $car->id . '.' . $ext;
             $photo = new Photo;
-            $photo->name = $p->getClientOriginalName();
+            $photo->name = $newfilename;
             $photo->location = "asd";
             $photo->cars()->associate($car);
             $photo->save();
+            $p->storeAs('public/cars', $newfilename);
         }
 
 
@@ -109,4 +114,5 @@ class CarController extends Controller
     {
         //
     }
+    
 }
