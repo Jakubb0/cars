@@ -65814,27 +65814,31 @@ $(document).on('change', '#photos', function (event) {
 });
 $(document).on('click', '.car-photo', function () {
   var id = $(this).attr("val");
-  console.log($(this).attr("val"));
   $.ajax({
     type: 'GET',
     url: '../test/' + id,
     success: function success(data) {
-      console.log("test");
+      console.log(data);
+      $("#car-gallery").html(data);
     }
   });
 });
 $(document).on('click', '#nextphoto', function () {
   if ($("#test").next().is("img")) {
     var src = $("#test").next().attr("src");
-    $("#test").insertAfter($("#test").next());
+    var tmp = $("#test").attr("src");
     $("#test").attr("src", src);
+    $("#test").insertAfter($("#test").next());
+    if ($("#test").prev().is("img")) $("#test").prev().attr("src", tmp);
   }
 });
 $(document).on('click', '#prevphoto', function () {
   if ($("#test").prev().is("img")) {
     var src = $("#test").prev().attr("src");
-    $("#test").attr("src", src);
+    var tmp = $("#test").attr("src");
     $("#test").insertBefore($("#test").prev());
+    $("#test").attr("src", src);
+    if ($("#test").next().is("img")) $("#test").next().attr("src", tmp);
   }
 });
 
