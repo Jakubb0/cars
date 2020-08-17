@@ -107,25 +107,8 @@ class CarController extends Controller
         $car->power = $request->power;
         $car->litre = $request->litre;
         $car->automatic = $request->gearbox;
-        $car->price = $request->price;
-        $car->buynow_price = $request->buynow_price;
         $car->description = $request->description;
-        $car->owner = Auth::id();
         $car->save();
-
-        $photos = $request->file('photos');
-        foreach($photos as $p)
-        {
-            $ext = $p->getClientOriginalExtension();
-            $newfilename = pathinfo($p->getClientOriginalName(), PATHINFO_FILENAME) . "_" . date("d_m_Y") . "_" . $car->id . '.' . $ext;
-            $photo = new Photo;
-            $photo->name = $newfilename;
-            $photo->location = "asd";
-            $photo->cars()->associate($car);
-            $photo->save();
-            $p->storeAs('public/cars', $newfilename);
-        }
-
     }
 
     /**
@@ -145,4 +128,9 @@ class CarController extends Controller
         return redirect('cars.index');
     }
     
+    public function mycars()
+    {
+        $cars = Car::where('owner', Auth::id())->get();
+        return view('cars.mycars')->with('cars', $cars);
+    }
 }

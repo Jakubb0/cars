@@ -29,11 +29,11 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" href="{{route('cars.index')}}">Home</a>
-                    <a class="nav-item nav-link" href="#">My auctions</a>
-                    <a class="nav-item nav-link" href="#">My cars</a>
+                    <a class="nav-item nav-link" href="">My auctions</a>
+                    <a class="nav-item nav-link" href="{{route('mycars')}}">My cars</a>
                 </div>
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-item nav-link mr-0" href="#">Logout</a>
+                    <a class="nav-item nav-link mr-0" href="{{route('logout')}}">Logout</a>
                 </div>
             </div>
         </nav>

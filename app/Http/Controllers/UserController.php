@@ -27,4 +27,10 @@ class UserController extends Controller
         else
             return redirect()->back();  
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect()->route('welcome');
+    }
 }
