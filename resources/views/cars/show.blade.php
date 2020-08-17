@@ -26,7 +26,12 @@
     </div>
     <div class="col-sm-4 text-right">
         <p><span class="font-weight-bold">Current bid: </span>{{$car->price}}</p>
-        <p><span class="font-weight-bold">Buy now for: </span>{{$car->buynow_price}}</p>
+        <p>
+          <form action="" method="POST">
+            <input class="" type="number" min="{{$car->price + 5}}"> <button type="submit" class="btn btn-primary">Bid</button>
+          </form>
+        </p>
+        <p><span class="font-weight-bold">Buy now for: </span>{{$car->buynow_price}} <button type="submit" class="btn btn-primary">Buy now</button></p>
     </div>
     <div class="col-12"><div class="car-desc">{{$car->description}}</div></div>
 </div>

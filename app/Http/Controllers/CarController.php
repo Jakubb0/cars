@@ -89,7 +89,7 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        //
+        return view('cars.edit')->with('car', $car);
     }
 
     /**
@@ -101,7 +101,31 @@ class CarController extends Controller
      */
     public function update(Request $request, Car $car)
     {
-        //
+        $car->brand = $request->brand;
+        $car->model = $request->model;
+        $car->year = $request->year;
+        $car->power = $request->power;
+        $car->litre = $request->litre;
+        $car->automatic = $request->gearbox;
+        $car->price = $request->price;
+        $car->buynow_price = $request->buynow_price;
+        $car->description = $request->description;
+        $car->owner = Auth::id();
+        $car->save();
+
+        $photos = $request->file('photos');
+        foreach($photos as $p)
+        {
+            $ext = $p->getClientOriginalExtension();
+            $newfilename = pathinfo($p->getClientOriginalName(), PATHINFO_FILENAME) . "_" . date("d_m_Y") . "_" . $car->id . '.' . $ext;
+            $photo = new Photo;
+            $photo->name = $newfilename;
+            $photo->location = "asd";
+            $photo->cars()->associate($car);
+            $photo->save();
+            $p->storeAs('public/cars', $newfilename);
+        }
+
     }
 
     /**
@@ -112,7 +136,13 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
-        //
+        foreach($car->photos as $photo)
+        {
+            $photo->delete();
+        }
+        $car->delete();
+
+        return redirect('cars.index');
     }
     
 }
