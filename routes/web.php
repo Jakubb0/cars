@@ -32,4 +32,6 @@ Route::get('/test/{carid}', 'PhotoController@gallery')->name('gallery');
 Route::resource('cars', 'CarController')->middleware('web'); // anything that uses Auth must be in 'web' middleware
 Route::get('/mycars', 'CarController@mycars')->name('mycars');
 
+//Bid
+Route::post('/bid/{carid}', 'BidController@bid')->name('bid');
 

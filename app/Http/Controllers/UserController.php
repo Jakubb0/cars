@@ -16,6 +16,8 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->email = $request->email;
         $user->save();
+
+        return redirect()->intended('cars');
     }
 
     public function login(Request $request)

@@ -24,18 +24,29 @@
         <p><span class="font-weight-bold">Displacement: </span>{{$car->litre}} ccm
         <span class="font-weight-bold">Power: </span><span>{{$car->power}} HP</span></p>
     </div>
-    <div class="col-sm-4 text-right">
-        <p><span class="font-weight-bold">Current bid: </span>{{$car->price}}</p>
+    <div class="col-sm-4 text-md-right">
+        @if(empty($car->bids))
+          <p><span class="font-weight-bold">Starting price: </span>{{$car->price}}</p>
+        @else
+          <p><span class="font-weight-bold">Current bid: </span>{{$car->bids->last()->price}}</p>
+        @endif
+        @if(Auth::check())
         <p>
-          <form action="" method="POST">
-            <input class="" type="number" min="{{$car->price + 5}}"> <button type="submit" class="btn btn-primary">Bid</button>
+          <form action="{{route('bid', $car->id)}}" method="POST">
+            @csrf
+            @if(empty($car->bids))
+              <input name="bid" id="bid" type="number" min="{{$car->price + 1}}"> <button type="submit" class="btn btn-primary">Bid</button>
+            @else
+              <input name="bid" id="bid" type="number" min="{{$car->bids->last()->price + 1}}"> <button type="submit" class="btn btn-primary">Bid</button>
+            @endif
           </form>
         </p>
+        @endif
         <p><span class="font-weight-bold">Buy now for: </span>{{$car->buynow_price}} <button type="submit" class="btn btn-primary">Buy now</button></p>
     </div>
+    
     <div class="col-12"><div class="car-desc">{{$car->description}}</div></div>
 </div>
-
 <div class="modal" id="photo_modal" tabindex="-1" role="dialog" aria-labelledby="photo_modal_longtitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

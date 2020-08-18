@@ -17,4 +17,9 @@ class Car extends Model
     {
         return $this->belongsTo('App\User', 'owner');
     }
+
+    public function bids()
+    {
+        return $this->belongsToMany('App\Bid', "bids_cars", "car_id", "bid_id");
+    }
 }

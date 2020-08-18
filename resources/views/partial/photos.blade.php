@@ -2,5 +2,5 @@
 @for($i=1; $i<count($photos); $i++)
     <img class="d-none" src="{{asset('storage/cars/'.$photos[$i])}}" val="{{$i}}" alt="Error">
 @endfor
-<p id="prevphoto"><</p>
-<p id="nextphoto">></p>
+<span id="prevphoto"><</span>
+<span id="nextphoto">></span>
