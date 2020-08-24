@@ -13,12 +13,22 @@ class BidController extends Controller
     public function bid(Request $request, $carid)
     {
         $car = Car::findOrFail($carid);
-        $bid = Bid::create([
-            'price' => $request->bid,
-            'user_id' => Auth::id(),
-            'date' => date("Y.m.d h:i:s"),
-        ]);
-        $car->bids()->attach($bid->id);
+        $lastbid = $car->bids->last();
+        if($request->bid>$lastbid->price && $lastbid->user_id!=Auth::id() && $car->owner!=Auth::id())
+        {
+            $bid = Bid::create([
+                'price' => $request->bid,
+                'user_id' => Auth::id(),
+                'date' => date("Y.m.d h:i:s"),
+            ]);
+            $car->bids()->attach($bid->id);
+        }
+        return redirect()->back();
+    }
 
+    public function mybids()
+    {
+        $bids = Bid::where('user_id', Auth::id())->get()->sortByDesc("date");
+        return view("bids.mybids")->with('bids', $bids);
     }
 }

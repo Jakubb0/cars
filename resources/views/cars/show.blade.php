@@ -34,6 +34,7 @@
         <p>
           <form action="{{route('bid', $car->id)}}" method="POST">
             @csrf
+            @if($car->owner!=Auth::id() && $car->bids->last()->user_id!=Auth::id())
             @if(empty($car->bids))
               <input name="bid" id="bid" type="number" min="{{$car->price + 1}}"> <button type="submit" class="btn btn-primary">Bid</button>
             @else
@@ -41,8 +42,9 @@
             @endif
           </form>
         </p>
-        @endif
         <p><span class="font-weight-bold">Buy now for: </span>{{$car->buynow_price}} <button type="submit" class="btn btn-primary">Buy now</button></p>
+        @endif
+        @endif
     </div>
     
     <div class="col-12"><div class="car-desc">{{$car->description}}</div></div>

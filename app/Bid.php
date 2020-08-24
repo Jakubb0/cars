@@ -11,12 +11,12 @@ class Bid extends Model
 
     public function users()
     {
-        $this->belongsToMany("App\User");
+        return $this->belongsToMany("App\User");
     }
     
     public function cars()
     {
-        $this->belongsToMany("App\Car", "bids_cars", "bid_id", "car_id");
+        return $this->belongsToMany("App\Car", "bids_cars", "bid_id", "car_id");
     }
 
 }

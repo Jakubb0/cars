@@ -34,4 +34,5 @@ Route::get('/mycars', 'CarController@mycars')->name('mycars');
 
 //Bid
 Route::post('/bid/{carid}', 'BidController@bid')->name('bid');
+Route::get('/mybids', 'BidController@mybids')->name('mybids');
 
