@@ -1,12 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>test</h1>
-<button id="sign_up" class="btn btn-primary" data-toggle="modal" data-target="#sign_up_modal">Utwórz konto</button>
-<button id="sign_in" class="btn btn-primary" data-toggle="modal" data-target="#sign_in_modal">Zaloguj</button>
-
-
-
 <!--Signup Modal -->
 <div class="modal fade" id="sign_up_modal" tabindex="-1" role="dialog" aria-labelledby="sign_up_modal_longtitle" aria-hidden="true">
   <div class="modal-dialog" role="document">

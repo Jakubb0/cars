@@ -23,6 +23,7 @@
     <div id="app" class="container w-100">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="{{route('cars.index')}}">Cars</a>
+        @if(Auth::check()==true)
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,6 +37,12 @@
                     <a class="nav-item nav-link mr-0" href="{{route('logout')}}">Logout</a>
                 </div>
             </div>
+        @else
+            <div class="navbar-nav ml-auto">
+                <a id="sign_up" class="nav-item nav-link" data-toggle="modal" data-target="#sign_up_modal">Utwórz konto</a>
+                <a id="sign_in" class="nav-item nav-link" data-toggle="modal" data-target="#sign_in_modal">Zaloguj</a>
+            </div>
+        @endif
         </nav>
         <main class="py-4 container">
             @yield('content')

@@ -53,12 +53,23 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="photo_modal_title">Photos</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="car-gallery">
+      <div class="modal-body">
+      <div id="CarPhotoControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" id="car-gallery"> 
+        </div>
+        <a class="carousel-control-prev" href="#CarPhotoControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#CarPhotoControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+        </a>
+      </div>
       </div>
     </div>
   </div>
