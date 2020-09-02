@@ -37,6 +37,7 @@ $(document).on('click', '.car-photo', function(){
      });
 });
 
+/*
 $(document).on('click', '#nextphoto', function(){
     if($("#test").next().is("img")){
         var src = $("#test").next().attr("src");
@@ -58,3 +59,4 @@ $(document).on('click', '#prevphoto', function(){
             $("#test").next().attr("src", tmp);
     }
 });
+*/
