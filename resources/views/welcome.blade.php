@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselCarsIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselCarsIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselCarsIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselCarsIndicators" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -17,31 +17,39 @@
       <img class="d-block w-100" src="http://localhost/cars/public/storage/cars/IMG_20190401_184323_18_08_2020_1.jpg" alt="Third slide">
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#carouselCarsIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#carouselCarsIndicators" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
-<img src="" alt="">
 
-<div class="row">
-  <div class="col-12" id="block1">
-    <h1>Looking for a car?</h1>
-    <h5>We got it!</h5>
-    <a href="{{route('cars.index')}}" class="btn btn-primary">Click here!</a>
+<div class="row mb-5 mt-5">
+  <div class="col-12">
+    <h1>Do you want to sell your car?</h1>
+    <h5>Sign up for free!</h5>
+    <a href="#" data-toggle="modal" data-target="#sign_up_modal" class="btn btn-primary">Sign up!</a>
   </div>
 </div>
+
+<div class="row mb-5 mt-5">
+  <div class="col-12">
+    <h1>Already have an account?</h1>
+    <h5>Sign in!</h5>
+    <a href="#" data-toggle="modal" data-target="#sign_in_modal" class="btn btn-primary">Sign in!</a>
+  </div>
+</div>
+
 
 <!--Signup Modal -->
 <div class="modal fade" id="sign_up_modal" tabindex="-1" role="dialog" aria-labelledby="sign_up_modal_longtitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="sign_up_modal_title">Utwórz konto</h5>
+        <h5 class="modal-title" id="sign_up_modal_title">Sign up</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -52,14 +60,17 @@
             @csrf
                 <label for="login">Login</label>
                     <input type="text" id="login" name="login" class="form-control">
-                <label for="password">Hasło</label>
+                <label for="password">Password</label>
+                <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Password must consist of at least 8 characters">
+                  !
+                </button>
                     <input type="password" id="password" name="password" class="form-control">
-                <label for="email">Adres E-Mail</label>
+                <label for="email">E-Mail</label>
                     <input type="email" id="email" name="email" class="form-control">
       </div>
       <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>
-            <button type="submit" class="btn btn-primary">Zarejestruj</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Sign up</button>
             </form>
       </div>
       </div>
@@ -72,7 +83,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="sign_in_modal_title">Utwórz konto</h5>
+        <h5 class="modal-title" id="sign_in_modal_title">Sign in</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -81,14 +92,12 @@
         <div class="form-group">
             <form action="{{route('login')}}" method="POST">
             @csrf
-                <label for="silogin">Login</label>
-                    <input type="text" id="silogin" name="login" class="form-control">
-                <label for="sipassword">Hasło</label>
-                    <input type="password" id="sipassword" name="password" class="form-control">
+                <input type="text" id="silogin" name="login" class="form-control" placeholder="Login:"><br>
+                <input type="password" id="sipassword" name="password" class="form-control" placeholder="Password:">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>
-        <button type="submit" class="btn btn-primary">Zaloguj</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
         </div>
       </div>

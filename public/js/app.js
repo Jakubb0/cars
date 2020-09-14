@@ -65804,6 +65804,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
 $(document).on('change', '#photos', function (event) {
   var photos = $("#photos").prop("files");
   $("#filesgallery").empty();

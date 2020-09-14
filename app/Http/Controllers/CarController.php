@@ -18,8 +18,15 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::all();
-        return view('cars.index')->with('cars', $cars);
+        if(Auth::check())
+        {
+            $cars = Car::all();
+            return view('cars.index')->with('cars', $cars);
+        }
+        else
+        {
+            return view('welcome');
+        }
     }
 
     /**

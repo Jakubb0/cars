@@ -14,7 +14,19 @@ class BidController extends Controller
     {
         $car = Car::findOrFail($carid);
         $lastbid = $car->bids->last();
-        if($request->bid>$lastbid->price && $lastbid->user_id!=Auth::id() && $car->owner!=Auth::id())
+        if(isset($lastbid)  && $car->owner!=Auth::id())
+        {
+            if($request->bid>$lastbid->price && $lastbid->user_id!=Auth::id())
+            {
+                $bid = Bid::create([
+                    'price' => $request->bid,
+                    'user_id' => Auth::id(),
+                    'date' => date("Y.m.d h:i:s"),
+                ]);
+                $car->bids()->attach($bid->id);
+            }
+        }
+        elseif($request->bid > $car->price)
         {
             $bid = Bid::create([
                 'price' => $request->bid,

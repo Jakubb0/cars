@@ -10931,11 +10931,12 @@ a.text-dark:focus {
 .car-link {
   text-decoration: none;
   color: black;
+  overflow: hidden;
 }
 
 .car-link img {
   max-height: 246px;
-  max-width: 328px;
+  max-width: 100%;
   height: auto;
   width: auto;
 }
@@ -10946,6 +10947,7 @@ a.text-dark:focus {
 
 .card {
   padding: 0;
+  height: 100%;
 }
 
 .car-link:hover {
@@ -10998,9 +11000,5 @@ a.text-dark:focus {
 
 .car-desc {
   white-space: pre-wrap;
-}
-
-#block1 {
-  background-color: rgba(0, 0, 255, 0.3);
 }
 

@@ -21,6 +21,7 @@
     </head>
     <body>
     <div id="app" class="container w-100">
+        @if(Auth::check())
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="{{route('cars.index')}}">Cars</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,20 +29,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-        @if(Auth::check()==true)
                     <a class="nav-item nav-link" href="{{route('cars.index')}}">Home</a>
                     <a class="nav-item nav-link" href="{{route('mybids')}}">My auctions</a>
                     <a class="nav-item nav-link" href="{{route('mycars')}}">My cars</a>
                 </div>
                 <div class="navbar-nav ml-auto">
+                    <a class="btn btn-primary" href="{{route('cars.create')}}">Add car</a>
                     <a class="nav-item nav-link mr-0" href="{{route('logout')}}">Logout</a>
-        @else
-                    <a id="sign_up" class="nav-item nav-link mr-0" data-toggle="modal" data-target="#sign_up_modal">Utwórz konto</a>
-                    <a id="sign_in" class="nav-item nav-link mr-0" data-toggle="modal" data-target="#sign_in_modal">Zaloguj</a>
                 </div>
             </div>
-        @endif
         </nav>
+        @endif
         <main class="py-4 container">
             @yield('content')
         </main>

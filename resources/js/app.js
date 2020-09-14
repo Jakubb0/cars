@@ -14,6 +14,9 @@ require('./bootstrap');
 
 require('./components/Example');
 
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+});
 
 
 $(document).on('change', '#photos', function(event) {
