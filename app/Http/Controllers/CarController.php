@@ -60,9 +60,9 @@ class CarController extends Controller
         $car->owner = Auth::id();
         $car->save();
 
-        if(isset($request->file('photos'))
+        $photos = $request->file('photos');
+        if(isset($photos))
         {
-            $photos = $request->file('photos');
             foreach($photos as $p)
             {
                 $ext = $p->getClientOriginalExtension();
