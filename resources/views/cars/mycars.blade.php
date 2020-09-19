@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@if(isset($cars[0]))
 <table class="table">
 <thead class="thead-dark">
     <th>Car</th>
@@ -25,4 +26,8 @@
 @endforeach
 </tbody>
 </table>
+@else
+<h4>You don't have cars for sale!</h4>
+<a href="{{route('cars.create')}}">Click here to add</a>
+@endif
 @endsection

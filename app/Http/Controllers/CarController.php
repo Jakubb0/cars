@@ -60,20 +60,21 @@ class CarController extends Controller
         $car->owner = Auth::id();
         $car->save();
 
-        $photos = $request->file('photos');
-        foreach($photos as $p)
+        if(isset($request->file('photos'))
         {
-            $ext = $p->getClientOriginalExtension();
-            $newfilename = pathinfo($p->getClientOriginalName(), PATHINFO_FILENAME) . "_" . date("d_m_Y") . "_" . $car->id . '.' . $ext;
-            $photo = new Photo;
-            $photo->name = $newfilename;
-            $photo->location = "asd";
-            $photo->cars()->associate($car);
-            $photo->save();
-            $p->storeAs('public/cars', $newfilename);
+            $photos = $request->file('photos');
+            foreach($photos as $p)
+            {
+                $ext = $p->getClientOriginalExtension();
+                $newfilename = pathinfo($p->getClientOriginalName(), PATHINFO_FILENAME) . "_" . date("d_m_Y") . "_" . $car->id . '.' . $ext;
+                $photo = new Photo;
+                $photo->name = $newfilename;
+                $photo->location = "asd";
+                $photo->cars()->associate($car);
+                $photo->save();
+                $p->storeAs('public/cars', $newfilename);
+            }
         }
-
-
         return redirect()->back();
     }
 

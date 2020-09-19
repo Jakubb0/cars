@@ -10,6 +10,11 @@ use App\Bid;
 
 class BidController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function bid(Request $request, $carid)
     {
         $car = Car::findOrFail($carid);
