@@ -69,7 +69,7 @@
     </div>
     <div class="form-group">
         <label for="photos">Photos</label>
-        <input type="file" name="photos[]" id="photos" multiple>
+        <input type="file" name="photos[]" id="photos" multiple required>
         <div id="filesgallery"></div>
     </div>
     <button type="submit" class="btn btn-primary">Add car</button>

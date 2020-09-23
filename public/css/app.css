@@ -10932,6 +10932,7 @@ a.text-dark:focus {
   text-decoration: none;
   color: black;
   overflow: hidden;
+  background-color: rgba(20, 234, 241, 0.1);
 }
 
 .car-link img {
@@ -11000,5 +11001,10 @@ a.text-dark:focus {
 
 .car-desc {
   white-space: pre-wrap;
+}
+
+#photo_modal {
+  width: 100%;
+  height: 100%;
 }
 
