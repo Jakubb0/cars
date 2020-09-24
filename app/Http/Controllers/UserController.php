@@ -11,20 +11,32 @@ class UserController extends Controller
 {
     public function register(Request $request)
     {
+        $validatedData = $request->validate([
+            'login' => 'required|unique:users',
+            'password' => 'required|min:8',
+            'email' => 'required|unique:users',
+        ]);
+
+
         $user = new User;
         $user->login = $request->login;
         $user->password = Hash::make($request->password);
         $user->email = $request->email;
         $user->save();
-
-        return redirect()->intended('cars');
+        
+        if(Auth::attempt(['login' => $request->login, 'password' => $request->password]))
+            return redirect()->intended('cars');
     }
 
     public function login(Request $request)
     {
-        $data = $request->only('login', 'password');
+        $validatedData = $request->validate([
+            'silogin' => 'required',
+            'sipassword' => 'required',
+        ]);
 
-        if(Auth::attempt($data))
+
+        if(Auth::attempt(['login' => $request->silogin, 'password' => $request->sipassword]))
             return redirect()->intended('cars');
         else
             return redirect()->back();  

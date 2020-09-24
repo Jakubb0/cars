@@ -9,11 +9,12 @@
                     <img src="{{asset('storage/cars/'.$car->photos[0]->name)}}" alt="" >
                 </div>
                 <div class="col-3 pt-2">
-                    <h5>{{ $car->brand . ' ' . $car->model }}</h5>
+                    <h5>{{ $car->brand . ' ' . $car->model }} <small>{{$car->year}}</small></h5>
+                    <small>{{$car->litre . 'ccm ' . $car->power . 'HP' }} {{$car->automatic?"Automatic gearbox":"Manual gearbox"}}</small>
                 </div>
-                <div class="col-6 text-right pr-4 pt-2 rounded-right">
-                        <p>Current bid: @if(isset($car->bids[0])) {{$car->bids->last()->price}} @else {{$car->price}} @endif $</p>
-                        <p class="small">Buy now price: {{$car->buynow_price}}$</p>
+                <div class="col-md-6 text-right pr-4 pt-2">
+                        <h5>@if(isset($car->bids[0])) {{$car->bids->last()->price}} @else {{$car->price}} @endif $</h5>
+                        <p class="small">Buy now for: {{$car->buynow_price}}$</p>
                 </div>
             </div>
         </a>

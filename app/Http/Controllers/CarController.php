@@ -47,6 +47,19 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'brand' => 'required',
+            'model' => 'required',
+            'year' => 'required|min:1900',
+            'power' => 'required|min:1',
+            'litre' => 'required|min:50',
+            'automatic' => 'required',
+            'price' => 'required',
+            'buynow_price' => 'required',
+            'description' => 'required',
+            'photos' => 'required',
+        ]);
+
         $car = new Car;
         $car->brand = $request->brand;
         $car->model = $request->model;
@@ -109,6 +122,16 @@ class CarController extends Controller
      */
     public function update(Request $request, Car $car)
     {
+        $validatedData = $request->validate([
+            'brand' => 'required',
+            'model' => 'required',
+            'year' => 'required|min:1900',
+            'power' => 'required|min:1',
+            'litre' => 'required|min:50',
+            'automatic' => 'required',
+            'description' => 'required',
+        ]);
+        
         $car->brand = $request->brand;
         $car->model = $request->model;
         $car->year = $request->year;

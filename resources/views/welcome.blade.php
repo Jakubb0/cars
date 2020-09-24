@@ -55,18 +55,24 @@
         </button>
       </div>
       <div class="modal-body">
+      @error('login')
+          <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
+      @error('password')
+          <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
+      @error('email')
+          <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
         <div class="form-group">
             <form action="{{route('register')}}" method="POST">
             @csrf
                 <label for="login">Login</label>
-                    <input type="text" id="login" name="login" class="form-control">
+                    <input type="text" id="login" name="login"  class="form-control @error('login') is-invalid @enderror">
                 <label for="password">Password</label>
-                <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Password must consist of at least 8 characters">
-                  !
-                </button>
-                    <input type="password" id="password" name="password" class="form-control">
+                    <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" >
                 <label for="email">E-Mail</label>
-                    <input type="email" id="email" name="email" class="form-control">
+                    <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror">
       </div>
       <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -89,11 +95,16 @@
         </button>
       </div>
       <div class="modal-body">
+      @if($errors->has(['silogin', 'sipassword']))
+        <div class="alert alert-danger">
+          User don't exists or wrong password.
+        </div>
+      @endif
         <div class="form-group">
             <form action="{{route('login')}}" method="POST">
             @csrf
-                <input type="text" id="silogin" name="login" class="form-control" placeholder="Login:"><br>
-                <input type="password" id="sipassword" name="password" class="form-control" placeholder="Password:">
+                <input type="text" id="silogin" name="silogin" class="form-control" placeholder="Login:"><br>
+                <input type="password" id="sipassword" name="sipassword" class="form-control" placeholder="Password:">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -104,5 +115,11 @@
     </div>
   </div>
 </div>
-
+<script type="text/javascript">
+  @if ($errors->has(['login', 'password', 'email']))
+      $('#sign_up_modal').modal('show');
+  @elseif ($errors->has(['silogin', 'sipassword']))
+      $('#sign_in_modal').modal('show');
+  @endif
+</script>
 @endsection

@@ -20,25 +20,25 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
-    <div id="app" class="container w-100">
-        @if(Auth::check())
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{route('cars.index')}}">Cars</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="{{route('cars.index')}}">Home</a>
-                    <a class="nav-item nav-link" href="{{route('mybids')}}">My auctions</a>
-                    <a class="nav-item nav-link" href="{{route('mycars')}}">My cars</a>
-                </div>
-                <div class="navbar-nav ml-auto">
-                    <a class="btn btn-primary" href="{{route('cars.create')}}">Add car</a>
-                    <a class="nav-item nav-link mr-0" href="{{route('logout')}}">Logout</a>
-                </div>
+    @if(Auth::check())
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{route('cars.index')}}">Cars</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{{route('cars.index')}}">Home</a>
+                <a class="nav-item nav-link" href="{{route('mybids')}}">My auctions</a>
+                <a class="nav-item nav-link" href="{{route('mycars')}}">My cars</a>
             </div>
-        </nav>
+            <div class="navbar-nav ml-auto">
+                <a class="btn btn-primary" href="{{route('cars.create')}}">Add car</a>
+                <a class="nav-item nav-link mr-0" href="{{route('logout')}}">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <div id="app" class="container w-100">
         @endif
         <main class="py-4 container">
             @yield('content')
